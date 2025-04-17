@@ -9,7 +9,7 @@
             font-family: sans-serif;
             margin: 20px;
             background-color: #f0f8ea; /* Light greenish background */
-            background-image: url('mango_texture.jpg'); /* Assuming your image is named 'mango_texture.jpg' */
+            background-image: url('/static/image/mango_texture.jpg'); /* Assuming your image is named 'mango_texture.jpg' */
             background-repeat: repeat;
         }
         .container {
@@ -64,7 +64,8 @@
         }
         .order-form input[type="text"],
         .order-form input[type="email"],
-        .order-form textarea {
+        .order-form textarea,
+        .order-form select {
             width: calc(100% - 12px);
             padding: 8px;
             margin-bottom: 10px;
@@ -91,50 +92,74 @@
         <h1>Exotic Mango</h1>
 
         <div class="product">
-            <img src="devgad.jpg" alt="Product 1" class="product-image">
+            <img src="/static/image/devgad.jpg" alt="Product 1" class="product-image">
             <div class="product-info">
                 <h3>Alphonso Devgad</h3>
                 <p>This is a world's best authentic alphonso mango, orange/golden-yellow.</p>
-                <p>Price: £12.00 - 6 pcs</p>
+                <p><strong>Price: £12.00 - 6 pcs/box</strong></p>               
             </div>
         </div>
 
         <div class="product">
-            <img src="ratnagiri.jpg" alt="Product 2" class="product-image">
+            <img src="/static/image/ratnagiri.jpg" alt="Product 2" class="product-image">
             <div class="product-info">
                 <h3>Ratnagiri Mango</h3>
-                <p>This is a world's best authentic alphonso mango, little smaller and yellowish compared to Devgad </p>
-                <p>Price: £11.00 - 6 pcs</p>
+                <p>This is a world's best authentic alphonso mango, little smaller and yellowish compared to Devgad.</p>
+                <p><strong>Price: £11.00 - 6 pcs/box</strong></p>
             </div>
         </div>
 
         <div class="product">
-            <img src="kesar.jpg" alt="Product 3" class="product-image">
+            <img src="/static/image/kesar.jpg" alt="Product 3" class="product-image">
             <div class="product-info">
                 <h3>Kesar</h3>
-                <p>The 'Gir Kesar' mango, also called Kesar, is a mango cultivar grown in the foothills of Girnar in Gujarat, western India. Bright Orange color</p>
-                <p>Price: £11.00 - 6 pcs</p>
+                <p>The 'Gir Kesar' mango, also called Kesar, is a mango cultivar grown in the foothills of Girnar in Gujarat, western India. Bright Orange color.</p>
+                <p><strong>Price: £11.00 - 6 pcs/box</strong></p>
             </div>
         </div>
 
         <div class="order-section">
             <h2>Book Your Order</h2>
             <p>Please fill out the form below to express your interest in ordering. We will get in touch with you to confirm your order and arrange payment and delivery.</p>
-            <form class="order-form">				
+            <form class="order-form" action="/submit-order" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
 
                 <label for="contact">Contact:</label>
                 <input type="text" id="contact" name="contact" required>
-				
-				<label for="address">Delivery Address:</label>
+
+                <label for="address">Delivery Address:</label>
                 <input type="text" id="address" name="address" required>
 
-                <label for="products">Products You Want to Order:</label>
-                <textarea id="products" name="products" rows="4" placeholder="Please list the names and quantities of the products you wish to order." required></textarea>
+                <!-- Alphonso Selector -->
+                <label for="alphonso_quantity">Alphonso Devgad Quantity:</label>
+                <select id="alphonso_quantity" name="alphonso_quantity" required>
+                    <option value="0">0</option>
+                    <option value="1-box">1 Box</option>
+                    <option value="2-boxes">2 Boxes</option>
+                    <option value="3-box">3 Boxes</option>
+                    <option value="4-boxes">4 Boxes</option>
+                </select>
 
-                <label for="comments">Additional Comments (Optional):</label>
-                <textarea id="comments" name="comments" rows="2" placeholder="Any specific instructions or questions?"></textarea>
+                <!-- Ratnagiri Selector -->
+                <label for="ratnagiri_quantity">Ratnagiri Mango Quantity:</label>
+                <select id="ratnagiri_quantity" name="ratnagiri_quantity" required>
+                    <option value="0">0</option>
+                    <option value="1-box">1 Box</option>
+                    <option value="2-boxes">2 Boxes</option>
+                    <option value="3-box">3 Boxes</option>
+                    <option value="4-boxes">4 Boxes</option>
+                </select>
+
+                <!-- Kesar Selector -->
+                <label for="kesar_quantity">Kesar Quantity:</label>
+                <select id="kesar_quantity" name="kesar_quantity" required>
+                    <option value="0">0</option>
+                    <option value="1-box">1 Box</option>
+                    <option value="2-boxes">2 Boxes</option>
+                    <option value="3-box">3 Boxes</option>
+                    <option value="4-boxes">4 Boxes</option>
+                </select>
 
                 <button type="submit">Submit Order Request</button>
             </form>
